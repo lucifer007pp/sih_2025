@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html, #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.three-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+}
+
+.overlay h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.overlay p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.overlay button {
+    background: #00aaff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.overlay button:hover {
+    background: #0088cc;
+}
+
+.how-container {
+    padding: 2rem;
+    color: #fff;
+    background: #111;
+    min-height: 100vh;
+}
+
+.how-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.how-container section {
+    margin-bottom: 2rem;
+}

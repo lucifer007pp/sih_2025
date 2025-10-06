@@ -1,0 +1,434 @@
+/* =========================
+   How.css - Full (container-scrolling + visible styled scrollbar)
+   ========================= */
+
+/* Reset & base */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    min-height: 100%;
+    background: #0a0a14;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    overflow-x: hidden; /* no horizontal scrolling */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   Make the .how-container the scrollable element
+   ========================= */
+.how-container {
+    position: relative;
+    padding: 2rem;
+    height: 100vh;            /* whole viewport height */
+    overflow-y: auto;         /* enable vertical scrolling on the container */
+    overflow-x: hidden;
+    color: #fff;
+    scrollbar-gutter: stable both-edges; /* reserve space for scrollbar (browser support varies) */
+    -webkit-overflow-scrolling: touch;   /* smooth scrolling on iOS */
+}
+
+/* Container scrollbar styling (applies to the container) */
+/* Chrome / Edge / Safari */
+.how-container::-webkit-scrollbar {
+    width: 12px;
+}
+.how-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+}
+.how-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff6b9a, #00e676, #4dccff);
+    border-radius: 12px;
+    border: 3px solid rgba(10, 10, 20, 0.95); /* gives a subtle inset look */
+}
+.how-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff4081, #00c853, #00bfff);
+}
+
+/* Firefox */
+.how-container {
+    scrollbar-width: thin;
+    scrollbar-color: #ff6b9a rgba(255, 255, 255, 0.03);
+}
+
+/* =========================
+   Background Layer (fixed visuals)
+   ========================= */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+            radial-gradient(circle at 20% 80%, rgba(120,119,198,0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255,119,198,0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(120,219,255,0.05) 0%, transparent 50%);
+    animation: backgroundShift 15s ease-in-out infinite;
+}
+
+/* =========================
+   Main Content
+   ========================= */
+.how-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+/* Smooth scrolling for in-page anchors (keeps nice behavior) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================
+   Title
+   ========================= */
+.how-title {
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff6b9a 0%, #ffd93d 25%, #6bffb8 50%, #4dccff 75%, #bc4fff 100%);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 3rem;
+    animation: gradientShift 8s ease infinite;
+    position: relative;
+}
+.how-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff6b9a, transparent);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.how-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+.btn:hover::before {
+    left: 100%;
+}
+.btn.pink {
+    background: linear-gradient(135deg, #ff6b9a 0%, #ff4081 100%);
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(255, 107, 154, 0.3), 0 2px 8px rgba(255, 107, 154, 0.2);
+}
+.btn.pink:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(255, 107, 154, 0.4), 0 4px 15px rgba(255, 107, 154, 0.3);
+}
+.btn.green {
+    background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(0, 230, 118, 0.3), 0 2px 8px rgba(0, 230, 118, 0.2);
+}
+.btn.green:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 230, 118, 0.4), 0 4px 15px rgba(0, 230, 118, 0.3);
+}
+
+/* =========================
+   Sections
+   ========================= */
+.section-container {
+    margin-bottom: 4rem;
+    position: relative;
+    opacity: 1; /* visible by default */
+    transform: none;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffeb3b 0%, #ff9800 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ffeb3b, transparent);
+    animation: widthGrow 2s ease-in-out infinite;
+}
+
+/* =========================
+   Cards Grid
+   ========================= */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.step-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b9a, #00e676, #4dccff);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+.step-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+.step-card:hover::before {
+    transform: scaleX(1);
+}
+.step-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+.step-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+.step-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =========================
+   Video Modal
+   ========================= */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    animation: modalFadeIn 0.3s ease forwards;
+}
+.video-content {
+    background: linear-gradient(135deg, rgba(30, 30, 50, 0.9) 0%, rgba(20, 20, 40, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    animation: modalScaleIn 0.3s ease 0.1s forwards;
+}
+.video-content iframe {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.video-content button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: linear-gradient(135deg, #ff4081, #ff6b9a);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 64, 129, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.video-content button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(255, 64, 129, 0.6);
+}
+
+/* Prevent body scrolling while modal open (use "modal-open" on body) */
+body.modal-open {
+    overflow: hidden;
+}
+
+.contact_info{
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.03); /* subtle glass effect */
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 3rem;
+    transition: all 0.3s ease;
+}
+
+.contact_info p:hover{
+    color: #4dccff;
+}
+
+/* =========================
+   Footer Styling
+   ========================= */
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.03); /* subtle glass effect */
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 3rem;
+    transition: all 0.3s ease;
+}
+
+footer:hover {
+    color: #4dccff;
+}
+
+/* =========================
+   Animations
+   ========================= */
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+@keyframes backgroundShift {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+@keyframes widthGrow {
+    0%, 100% { width: 0%; }
+    50% { width: 100%; }
+}
+@keyframes modalFadeIn {
+    to { opacity: 1; }
+}
+@keyframes modalScaleIn {
+    to { transform: scale(1); }
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 768px) {
+    .how-container {
+        padding: 1rem;
+    }
+    .how-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .video-content {
+        padding: 1rem;
+    }
+    .video-content iframe {
+        height: 300px;
+    }
+}
+@media (max-width: 480px) {
+    .how-title {
+        font-size: 2rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .step-card {
+        padding: 1.5rem;
+    }
+}
+

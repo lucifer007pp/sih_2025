@@ -1,0 +1,28 @@
+{
+  "cards": [
+    {
+      "heading": "\uD83E\uDDEF Cabin Fire Drill",
+      "voice_command": "/Sounds/voice_commands/voice_command1.mp3",
+      "soundCue": "/Sounds/sound_cues/sound_cue1.wav",
+      "vibration": "/Sounds/vibrations/vibration1.wav"
+    },
+    {
+      "heading": "⚠\uFE0F Emergency Depressurization",
+      "voice_command": "/Sounds/voice_commands/voice_command2.mp3",
+      "soundCue": "/Sounds/sound_cues/sound_cue2.mp3",
+      "vibration": "/Sounds/vibrations/vibration2.wav"
+    },
+    {
+      "heading": "\uD83E\uDDD1\uD83C\uDFFB\u200D\uD83D\uDE80 Space Suite Leak during EVA",
+      "voice_command": "/Sounds/voice_commands/voice_command3.mp3",
+      "soundCue": "/Sounds/sound_cues/sound_cue3.wav",
+      "vibration": "/Sounds/vibrations/vibration3.wav"
+    },
+    {
+      "heading": "\uD83D\uDE80 Spin Out",
+      "voice_command": "/Sounds/voice_commands/voice_command4.mp3",
+      "soundCue": "/Sounds/sound_cues/sound_cue4.wav",
+      "vibration": "/Sounds/vibrations/vibration4.wav"
+    }
+  ]
+}
