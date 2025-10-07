@@ -170,11 +170,11 @@ export default function How() {
                             <button onClick={() => setShowFeatureBox(false)} className="close-btn">✖</button>
                             <h2>🚀 Up Coming Features!</h2>
                             <ul className="feature-list">
-                                <li>⚙️ Real-time AI REM Analyzer</li>
-                                <li>📡 Neural-Link Data Sync</li>
-                                <li>🎧 Immersive Dream Sound Engine</li>
-                                <li>💤 Sleep Phase Visualizer</li>
-                                <li>🌌 Interplanetary Mission Trainer</li>
+                                <li>📊 Dynamic Dashboard </li>
+                                <li>👁️ Live Monitoring </li>
+                                <li>💬 Training Feedback </li>
+                                <li>📝 Training Assessment </li>
+                                <li>💾 Live Data Extractor </li>
                             </ul>
                         </div>
                     </div>
