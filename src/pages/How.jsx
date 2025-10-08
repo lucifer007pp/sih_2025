@@ -153,8 +153,8 @@ export default function How() {
                         <div className="video-content">
                             <button onClick={() => setShowVideo(false)} className="close-btn">✖</button>
                             <iframe
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                                title="Demo Video"
+                                src="https://www.youtube.com/embed/z9kidTsVLac?si=FCcA-UjdV_PZdR5q"
+                                title="Astro nudge video"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
@@ -192,3 +192,4 @@ export default function How() {
         </div>
     );
 }
+
